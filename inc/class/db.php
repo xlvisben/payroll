@@ -28,7 +28,7 @@ class Db
             if (self::$_connection->connect_error) {
                 die("Connection failed. Cannot connect to MySQL Server. ");
             }
-            self::$_connection->set_charset('utf-8');
+            // self::$_connection->set_charset('UTF-8');
         }
         return self::$_connection;
     }

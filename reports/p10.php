@@ -22,19 +22,19 @@ if (!isset($_SESSION['login'])) {
     exit;
 }
 
-function __autoload($class_name)
+spl_autoload_register(function ($class_name)
 {
-    $file = strtolower("../inc/class/" . $class_name . ".php");
     try {
-        if (file_exists($file)) {
-            require_once $file;
+        $class_file = __DIR__.'/../inc/class/' . strtolower($class_name) . '.php';
+        if (file_exists($class_file)) {
+            require_once $class_file;
         } else {
-            throw new Exception("Unable to load class $class_name in the file $file");
+            throw new Exception("Unable to load class $class_name in the file $class_file");
         }
     } catch (Exception $e) {
         echo "Exception: " . $e->getMessage();
     }
-}
+});
 
 $pdf = new TCPDF("P", PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
 

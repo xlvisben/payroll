@@ -88,7 +88,7 @@ MENDE;
                                     ++$i;
                                     $j = ($i % 2);
                                     $checked = '';
-                                    if($row->exclude == 1)
+                                    if(isset($row->exclude))
                                         $checked = 'checked';
                                     echo "<tr $class[$j]><td>$i</td>
                                             <td><a href='?page=record&id=$row->id'
